@@ -1,0 +1,44 @@
+* {
+  background-color: rgb(33, 37, 41);
+  color: white;
+}
+
+.app-container {
+  display: flex;
+}
+.content {
+  width: 100%;
+}
+.side-bar {
+  min-height: 100vh;
+}
+.post-card {
+  margin: 20px;
+}
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-ks {
+  float: end;
+}
+.create-post {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+.welcome {
+  padding-left: 70px;
+  padding-top: 50px;
+  color: white;
+}
+.on-text {
+  color: white;
+}
+.form-label {
+  color: white;
+}
+.bg-active {
+  background-color: #0d6efd;
+}

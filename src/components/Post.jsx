@@ -24,7 +24,7 @@ const Post = (props) => {
         {tags.map((individualTag) => (
           <h6
             className="card-subtitle mb-2"
-            style={{color: "white"}}
+            style={{ color: "white" }}
             key={individualTag}
           >
             #{individualTag}
@@ -32,7 +32,10 @@ const Post = (props) => {
         ))}
         <br />
         <div className="alert alert-success" role="alert">
-          Post is reacted by {props.post.reactions} people.
+          Post is liked by {props.post.reactions.likes} people.
+        </div>
+        <div className="alert alert-success" role="alert">
+          Post is disliked by {props.post.reactions.dislikes} people.
         </div>
       </div>
     </div>

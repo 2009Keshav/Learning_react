@@ -7,7 +7,8 @@ const CreatePost = () => {
   const userIdElement = useRef();
   const postTitleElement = useRef();
   const postBodyElement = useRef();
-  const reactionsElement = useRef();
+  const reactionLikesElement = useRef();
+  const reactionDisikesElement = useRef();
   const tagsElement = useRef();
 
   const handleSubmit = (event) => {
@@ -15,7 +16,8 @@ const CreatePost = () => {
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
-    const reactions = reactionsElement.current.value;
+    const likes = reactionLikesElement.current.value;
+    const dislikes = reactionDisikesElement.current.value;
     // we got number of hashtags
     let tags = tagsElement.current.value;
     // Separating hashtags
@@ -26,14 +28,18 @@ const CreatePost = () => {
       id: postId,
       title: postTitle,
       body: postBody,
-      reactions: reactions,
+      reactions: {
+        likes: likes,
+        dislikes: dislikes,
+      },
       userId: userId,
       tags: tagArray,
     };
     userIdElement.current.value = "";
     postTitleElement.current.value = "";
     postBodyElement.current.value = "";
-    reactionsElement.current.value = "";
+    reactionLikesElement.current.value = "";
+    reactionDisikesElement.current.value = "";
     tagsElement.current.value = "";
     addPost(newPost);
   };
@@ -81,15 +87,28 @@ const CreatePost = () => {
         />
       </div>
       <div className="mb-3">
-        <label forhtml="reactions" className="form-label">
-          Number of reactions
+        <label forhtml="likes" className="form-label">
+          Number of Likes
         </label>
         <input
-          ref={reactionsElement}
+          ref={reactionLikesElement}
           type="number"
           className="form-control"
-          id="reactions"
-          placeholder="How many people reacted to this."
+          id="likes"
+          placeholder="How many people Liked this."
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label forhtml="reactions" className="form-label">
+          Number of Dislikes
+        </label>
+        <input
+          ref={reactionDisikesElement}
+          type="number"
+          className="form-control"
+          id="Dislikes"
+          placeholder="How many people Disliked this."
           required
         />
       </div>

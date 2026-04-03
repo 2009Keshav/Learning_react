@@ -4,15 +4,9 @@ import myImg2 from "../assets/image2.png";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { PostListData } from "../store/posts-list-store";
 const SideBar = ({ selectedtab, setSelectedTab }) => {
-  const { postList } = useContext(PostListData);
+  const { postList, OnSignOut, onGetPostClick } = useContext(PostListData);
 
-  let userName;
-  if (postList.length === 0) {
-    userName = "Guest";
-  } else {
-    let user_data = postList[0];
-    userName = user_data.userId;
-  }
+  let user_data = postList[0];
   const handleOnClick = (tab_name) => {
     setSelectedTab(tab_name);
   };
@@ -82,12 +76,12 @@ const SideBar = ({ selectedtab, setSelectedTab }) => {
             height="32"
             className="rounded-circle me-2"
           />{" "}
-          <strong>{userName}</strong>
+          <strong>{postList.length === 0 ? "Guest" : user_data.userId}</strong>
         </a>
         <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
           {" "}
           <li>
-            <a className="dropdown-item" href="#">
+            <a className="dropdown-item" href="#" onClick={onGetPostClick}>
               Old Posts
             </a>
           </li>{" "}
@@ -105,7 +99,7 @@ const SideBar = ({ selectedtab, setSelectedTab }) => {
             <hr className="dropdown-divider" />
           </li>{" "}
           <li>
-            <a className="dropdown-item" href="#">
+            <a className="dropdown-item" href="#" onClick={OnSignOut}>
               Sign out
             </a>
           </li>{" "}
